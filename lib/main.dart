@@ -10,6 +10,7 @@ import 'core/app_colors.dart';
 import 'screens/login_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'core/theme_manager.dart';
@@ -87,32 +88,20 @@ class MoneyRotaApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
+            textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).apply(
+              bodyColor: Colors.white,
+              displayColor: Colors.white,
+            ),
+            appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
               iconTheme: IconThemeData(color: Colors.white),
               titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
             ),
             cardColor: const Color(0xFF1E1E1E), 
           ),
 
-          home: showOnboarding
-              ? const OnboardingScreen()
-              : StreamBuilder<User?>(
-                  stream: FirebaseAuth.instance.authStateChanges(),
-                  builder: (context, snapshot) {
-       
-
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Scaffold(
-                    body: Center(child: CircularProgressIndicator()),
-                  );
-                }
-
-                if (snapshot.hasData) {
-                  return const DashboardScreen();
-                }
-
-                return const LoginScreen();
-              },
-            ),
+          home: const SplashScreen(),
         );
       },
     );

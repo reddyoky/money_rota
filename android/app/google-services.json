@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1091899305600",
+    "project_id": "moneyrota-5529d",
+    "storage_bucket": "moneyrota-5529d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091899305600:android:693d034b3a69cc7144c065",
+        "android_client_info": {
+          "package_name": "com.example.money_rota"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhhueheI4DLhBbV_ILd_l6Hs72yMw7h78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
