@@ -1,0 +1,248 @@
+﻿Resolving dependencies...
+Downloading packages...
+  _flutterfire_internals 1.3.64 (1.3.65 available)
+  characters 1.4.0 (1.4.1 available)
+  cloud_firestore 6.1.0 (6.1.1 available)
+  cloud_firestore_platform_interface 7.0.4 (7.0.5 available)
+  cloud_firestore_web 5.1.0 (5.1.1 available)
+  firebase_auth 6.1.2 (6.1.3 available)
+  firebase_auth_platform_interface 8.1.4 (8.1.5 available)
+  firebase_auth_web 6.1.0 (6.1.1 available)
+  firebase_core 4.2.1 (4.3.0 available)
+  firebase_core_web 3.3.0 (3.3.1 available)
+  flutter_launcher_icons 0.13.1 (0.14.4 available)
+  google_fonts 6.3.2 (6.3.3 available)
+  image 4.7.1 (4.7.2 available)
+  introduction_screen 3.1.17 (4.0.0 available)
+  matcher 0.12.17 (0.12.18 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  test_api 0.7.7 (0.7.8 available)
+Got dependencies!
+17 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleRelease'...                        
+flutter : lib/services
+/gemini_service.dart:7
+:14: Error: Type 'Gene
+rativeModel' not found
+.
+At line:1 char:1
++ flutter build apk > 
+build_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpecifi
+ed    : (lib/services/
+ge.    ..del' not foun
+d.:S    tring) [], Rem
+oteEx    ception
+    + FullyQualifiedEr
+r    orId : NativeComm
+an    dError
+ 
+  late final Generativ
+eModel _model;
+             ^^^^^^^^^
+^^^^^^
+lib/services/gemini_se
+rvice.dart:15:40: Erro
+r: Type 'Debt' not fou
+nd.
+  Future<String> expla
+inDebtOrder(List<Debt>
+ debts) async {
+                      
+                 ^^^^
+lib/services/gemini_se
+rvice.dart:7:14: Error
+: 'GenerativeModel' is
+n't a type.
+  late final Generativ
+eModel _model;
+             ^^^^^^^^^
+^^^^^^
+lib/services/gemini_se
+rvice.dart:11:14: Erro
+r: The method 'Generat
+iveModel' isn't define
+d for the type 'Gemini
+Service'.
+ - 'GeminiService' is 
+from 'package:money_ro
+ta/services/gemini_ser
+vice.dart' ('lib/servi
+ces/gemini_service.dar
+t').
+Try correcting the nam
+e to the name of an ex
+isting method, or defi
+ning a method named 'G
+enerativeModel'.
+    _model = Generativ
+eModel(model: 'gemini-
+1.5-flash', apiKey: _a
+piKey);
+             ^^^^^^^^^
+^^^^^^
+lib/services/gemini_se
+rvice.dart:15:40: Erro
+r: 'Debt' isn't a type
+.
+  Future<String> expla
+inDebtOrder(List<Debt>
+ debts) async {
+                      
+                 ^^^^
+lib/services/gemini_se
+rvice.dart:20:16: Erro
+r: The getter 'name' i
+sn't defined for the t
+ype 'Object?'.
+ - 'Object' is from 'd
+art:core'.
+Try correcting the nam
+e to the name of an ex
+isting getter, or defi
+ning a getter or field
+ named 'name'.
+        "- ${d.name}: 
+${d.currentBalance.toS
+tringAsFixed(0)} TL, F
+aiz: %${d.interestRate
+}"
+               ^^^^
+lib/services/gemini_se
+rvice.dart:20:27: Erro
+r: The getter 'current
+Balance' isn't defined
+ for the type 'Object?
+'.
+ - 'Object' is from 'd
+art:core'.
+Try correcting the nam
+e to the name of an ex
+isting getter, or defi
+ning a getter or field
+ named 'currentBalance
+'.
+        "- ${d.name}: 
+${d.currentBalance.toS
+tringAsFixed(0)} TL, F
+aiz: %${d.interestRate
+}"
+                      
+    ^^^^^^^^^^^^^^
+lib/services/gemini_se
+rvice.dart:20:77: Erro
+r: The getter 'interes
+tRate' isn't defined f
+or the type 'Object?'.
+ - 'Object' is from 'd
+art:core'.
+Try correcting the nam
+e to the name of an ex
+isting getter, or defi
+ning a getter or field
+ named 'interestRate'.
+        "- ${d.name}: 
+${d.currentBalance.toS
+tringAsFixed(0)} TL, F
+aiz: %${d.interestRate
+}"
+                      
+                      
+                      
+          ^^^^^^^^^^^^
+lib/services/gemini_se
+rvice.dart:31:24: Erro
+r: The getter 'Content
+' isn't defined for th
+e type 'GeminiService'
+.
+ - 'GeminiService' is 
+from 'package:money_ro
+ta/services/gemini_ser
+vice.dart' ('lib/servi
+ces/gemini_service.dar
+t').
+Try correcting the nam
+e to the name of an ex
+isting getter, or defi
+ning a getter or field
+ named 'Content'.
+      final content = 
+[Content.text(prompt)]
+;
+                      
+ ^^^^^^^
+lib/services/gemini_se
+rvice.dart:44:24: Erro
+r: The getter 'Content
+' isn't defined for th
+e type 'GeminiService'
+.
+ - 'GeminiService' is 
+from 'package:money_ro
+ta/services/gemini_ser
+vice.dart' ('lib/servi
+ces/gemini_service.dar
+t').
+Try correcting the nam
+e to the name of an ex
+isting getter, or defi
+ning a getter or field
+ named 'Content'.
+      final content = 
+[Content.text(prompt)]
+;
+                      
+ ^^^^^^^
+lib/screens/debt_detai
+l_screen.dart:56:62: E
+rror: Too many positio
+nal arguments: 1 allow
+ed, but 3 found.
+Try removing the extra
+ positional arguments.
+    final message = aw
+ait _geminiService.get
+MotivationMessage(
+                      
+                      
+                 ^
+Target kernel_snapshot
+_program failed: Excep
+tion
+
+
+FAILURE: Build failed 
+with an exception.
+
+* What went wrong:
+Execution failed for t
+ask ':app:compileFlutt
+erBuildRelease'.
+> Process 'command 'C:
+\Users\tsrel\develop\f
+lutter\bin\flutter.bat
+'' finished with non-z
+ero exit value 1
+
+* Try:
+> Run with --stacktrac
+e option to get the st
+ack trace.
+> Run with --info or -
+-debug option to get m
+ore log output.
+> Run with --scan to g
+et full insights.
+> Get more help at htt
+ps://help.gradle.org.
+
+BUILD FAILED in 8s
+Running Gradle task 'assembleRelease'...                            8,4s
+Gradle task assembleRe
+lease failed with exit
+ code 1

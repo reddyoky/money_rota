@@ -38,7 +38,7 @@ class OnboardingScreen extends StatelessWidget {
         PageViewModel(
           title: "Hoş Geldiniz",
           body: "Paranızı yönetmenin en kolay yolu ile tanışın.",
-          image: _buildIcon(Icons.account_balance_wallet_rounded),
+          image: Center(child: Image.asset('assets/images/logo.png', width: 250)),
           decoration: pageDecoration,
         ),
         PageViewModel(

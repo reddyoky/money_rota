@@ -78,7 +78,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: Row(
           children: [
             Image.asset(
-              'assets/images/logo.jpg',
+              'assets/images/logo.png',
               height: 32,
               width: 32,
             ),
