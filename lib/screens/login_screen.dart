@@ -59,18 +59,10 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 60),
               
               Center(
-                child: Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    width: 40,
-                    height: 40,
-                  ),
+                child: Image.asset(
+                  'assets/images/logo_text.png',
+                  width: 200,
+                  fit: BoxFit.contain,
                 ),
               ),
               const SizedBox(height: 24),
