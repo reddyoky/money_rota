@@ -85,13 +85,7 @@ class MoneyRotaApp extends StatelessWidget {
               bodyColor: Colors.white,
               displayColor: Colors.white,
             ),
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-            textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).apply(
-              bodyColor: Colors.white,
-              displayColor: Colors.white,
-            ),
+
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.transparent,
               elevation: 0,
