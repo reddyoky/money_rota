@@ -70,30 +70,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Row(
                     children: [
-                      GestureDetector(
-                        onTap: _pickImage,
-                        child: Container(
-                          width: 70,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white, width: 3),
-                            image: ProfileManager().imagePath != null
-                                ? DecorationImage(
-                                    image: FileImage(File(ProfileManager().imagePath!)),
-                                    fit: BoxFit.cover,
-                                  )
-                                : null,
+                      Stack(
+                        children: [
+                          GestureDetector(
+                            onTap: _pickImage,
+                            child: Container(
+                              width: 70,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.white, width: 3),
+                                image: ProfileManager().imagePath != null
+                                    ? DecorationImage(
+                                        image: FileImage(File(ProfileManager().imagePath!)),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : null,
+                              ),
+                              child: ProfileManager().imagePath == null
+                                  ? const Icon(
+                                      Icons.person,
+                                      size: 35,
+                                      color: AppColors.primary,
+                                    )
+                                  : null,
+                            ),
                           ),
-                          child: ProfileManager().imagePath == null
-                              ? const Icon(
-                                  Icons.person,
-                                  size: 35,
-                                  color: AppColors.primary,
-                                )
-                              : null,
-                        ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: const BoxDecoration(
+                                color: AppColors.primary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -256,21 +276,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Yardım Merkezi"),
-        content: const Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Herhangi bir sorunuz için bize ulaşın:"),
-            SizedBox(height: 8),
-            SelectableText(
-              "destek@moneyrota.com",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            Text("S.S.S", style: TextStyle(fontWeight: FontWeight.bold)),
-            Text("- Verilerim güvende mi? Evet, Firebase güvencesiyle saklanır."),
-            Text("- Şifremi unuttum? Giriş ekranından sıfırlayabilirsiniz."),
-          ],
+        content: const SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Herhangi bir sorunuz için bize ulaşın:"),
+              SizedBox(height: 8),
+              SelectableText(
+                "info@takikaratepe.com",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 16),
+              Text("S.S.S", style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("- Verilerim güvende mi? Evet, Firebase güvencesiyle saklanır."),
+              Text("- Şifremi unuttum? Giriş ekranından sıfırlayabilirsiniz."),
+            ],
+          ),
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text("Kapat")),
@@ -364,13 +386,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Profili Düzenle"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(controller: nameCtrl, decoration: const InputDecoration(labelText: "Ad")),
-            TextField(controller: surnameCtrl, decoration: const InputDecoration(labelText: "Soyad")),
-            TextField(controller: emailCtrl, decoration: const InputDecoration(labelText: "E-posta")),
-          ],
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(controller: nameCtrl, decoration: const InputDecoration(labelText: "Ad")),
+              TextField(controller: surnameCtrl, decoration: const InputDecoration(labelText: "Soyad")),
+              TextField(controller: emailCtrl, decoration: const InputDecoration(labelText: "E-posta")),
+            ],
+          ),
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text("İptal")),

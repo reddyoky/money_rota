@@ -45,9 +45,9 @@ class BiometricService {
         localizedReason: 'Hızlı giriş yapmak için kimliğinizi doğrulayın',
         options: const AuthenticationOptions(
           stickyAuth: true,
-          biometricOnly: false, 
         ),
       );
+
     } on PlatformException catch (_) {
       return false;
     }

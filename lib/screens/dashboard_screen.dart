@@ -28,43 +28,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void _showGeminiAnalysis(List<Debt> debts) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).cardColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => Container(
         padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.auto_awesome, color: AppColors.primary),
-                const SizedBox(width: 10),
-                Text(
-                  "Finansal Asistan",
-                  style: GoogleFonts.inter(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(Icons.auto_awesome, color: AppColors.primary),
+                  const SizedBox(width: 10),
+                  Text(
+                    "Finansal Asistan",
+                    style: GoogleFonts.inter(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            FutureBuilder<String>(
-              future: _geminiService.explainDebtOrder(debts),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                return Text(
-                  snapshot.data ?? "Hata oluştu.",
-                  style: GoogleFonts.inter(fontSize: 15, height: 1.5),
-                );
-              },
-            ),
-          ],
+                ],
+              ),
+              const SizedBox(height: 16),
+              FutureBuilder<String>(
+                future: _geminiService.explainDebtOrder(debts),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return Text(
+                    snapshot.data ?? "Hata oluştu.",
+                    style: GoogleFonts.inter(
+                      fontSize: 15, 
+                      height: 1.5,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -282,9 +289,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           title: Row(
                             children: [
-                              Text(
-                                debt.name,
-                                style: GoogleFonts.inter(fontWeight: FontWeight.bold),
+                              Flexible(
+                                child: Text(
+                                  debt.name,
+                                  style: GoogleFonts.inter(fontWeight: FontWeight.bold),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                               if (isPriority) ...[
                                 const SizedBox(width: 8),

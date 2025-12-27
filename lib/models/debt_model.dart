@@ -11,6 +11,8 @@ class Debt {
   final int installmentsPaid;
   final int startDate;
   final double totalLateFees;
+  final double? limit;
+  final int? lastPaymentDate;
 
   Debt({
     required this.id,
@@ -25,6 +27,8 @@ class Debt {
     required this.installmentsPaid,
     required this.startDate,
     this.totalLateFees = 0.0,
+    this.limit,
+    this.lastPaymentDate,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,6 +44,8 @@ class Debt {
       'installmentsPaid': installmentsPaid,
       'startDate': startDate,
       'totalLateFees': totalLateFees,
+      'limit': limit,
+      'lastPaymentDate': lastPaymentDate,
       'createdAt': DateTime.now().millisecondsSinceEpoch,
     };
   }
@@ -58,6 +64,8 @@ class Debt {
       installmentsPaid: map['installmentsPaid'] ?? 0,
       startDate: map['startDate'] ?? DateTime.now().millisecondsSinceEpoch,
       totalLateFees: (map['totalLateFees'] ?? 0).toDouble(),
+      limit: map['limit']?.toDouble(),
+      lastPaymentDate: map['lastPaymentDate'],
     );
   }
 }

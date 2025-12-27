@@ -20,7 +20,9 @@ class _AddDebtScreenState extends State<AddDebtScreen> {
   final _rateCtrl = TextEditingController();
   final _termCtrl = TextEditingController();
   final _paidCountCtrl = TextEditingController(text: "0");
-  final _dayCtrl = TextEditingController(text: DateTime.now().day.toString()); 
+  final _dayCtrl = TextEditingController(text: DateTime.now().day.toString());
+  final _limitCtrl = TextEditingController();
+  DateTime? _lastPaymentDate;
 
   double _monthlyPayment = 0;
   double _totalDebt = 0;
@@ -70,14 +72,10 @@ class _AddDebtScreenState extends State<AddDebtScreen> {
     if (day < 1) day = 1;
     if (day > 31) day = 31;
     
-    
     _calculate();
 
-    
     DateTime now = DateTime.now();
     DateTime nextPaymentDate;
-    
-    
     
     if (now.day <= day) {
       nextPaymentDate = DateTime(now.year, now.month, day);
@@ -85,12 +83,6 @@ class _AddDebtScreenState extends State<AddDebtScreen> {
       nextPaymentDate = DateTime(now.year, now.month + 1, day);
     }
 
-    
-    
-    
-    
-    
-    
     DateTime calculatedStartDate = DateTime(
       nextPaymentDate.year, 
       nextPaymentDate.month - paid, 
@@ -109,6 +101,8 @@ class _AddDebtScreenState extends State<AddDebtScreen> {
       paymentDay: day,
       installmentsPaid: paid,
       startDate: calculatedStartDate.millisecondsSinceEpoch,
+      limit: double.tryParse(_limitCtrl.text),
+      lastPaymentDate: _lastPaymentDate?.millisecondsSinceEpoch,
     );
 
     await FirebaseFirestore.instance.collection('debts').add(debt.toMap());
@@ -144,8 +138,46 @@ class _AddDebtScreenState extends State<AddDebtScreen> {
               ],
             ),
             const SizedBox(height: 16),
-            
-            
+            _input("Kart Limiti (Opsiyonel - Kredi Kartıysa)", _limitCtrl, isNumber: true),
+            const SizedBox(height: 16),
+            InkWell(
+              onTap: () async {
+                final date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime.now(),
+                );
+                if (date != null) {
+                  setState(() => _lastPaymentDate = date);
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(12),
+                  color: Theme.of(context).cardColor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      _lastPaymentDate == null
+                          ? "En Son Ödeme Tarihi (Opsiyonel)"
+                          : DateFormat('dd.MM.yyyy').format(_lastPaymentDate!),
+                      style: TextStyle(
+                        color: _lastPaymentDate == null
+                            ? Theme.of(context).hintColor
+                            : Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    const Icon(Icons.calendar_today),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
              Row(
               children: [
                  Expanded(
