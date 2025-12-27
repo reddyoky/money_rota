@@ -42,5 +42,5 @@ flutter:
   assets:
 
     - assets/images/
-    - assets/images/logo_text.png # Explicit include if needed, though folder include works. Just to be safe or if explicit listing preferred. Actually folder is enough but I'll trust folder.
+    - assets/images/logo_cropped.png
     - .env

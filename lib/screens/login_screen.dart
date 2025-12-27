@@ -60,9 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
               
               Center(
                 child: Image.asset(
-                  'assets/images/logo_text.png',
-                  width: 200,
-                  fit: BoxFit.contain,
+                  'assets/images/logo_cropped.png',
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
               const SizedBox(height: 24),
