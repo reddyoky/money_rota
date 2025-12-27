@@ -1,0 +1,45 @@
+name: money_rota
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^4.3.0
+  firebase_auth: ^6.1.3
+  google_fonts: ^6.3.3
+  percent_indicator: ^4.2.5
+  cloud_firestore: ^6.1.1
+  intl: ^0.20.2
+  flutter_localizations:
+    sdk: flutter
+  google_generative_ai: ^0.4.7
+  introduction_screen: ^4.0.0
+  shared_preferences: ^2.5.4
+  lottie: ^3.3.2
+  flutter_dotenv: ^6.0.0
+  local_auth: ^2.3.0
+  flutter_secure_storage: ^9.2.2
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter:
+
+  uses-material-design: true
+  assets:
+
+    - assets/images/
+    - .env
