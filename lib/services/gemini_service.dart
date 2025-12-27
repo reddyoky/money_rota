@@ -14,7 +14,7 @@ class GeminiService {
 
   GeminiService() {
     if (_apiKey.isNotEmpty) {
-      _model = GenerativeModel(model: 'gemini-pro', apiKey: _apiKey);
+      _model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: _apiKey);
       _chat = _model?.startChat();
     } else {
       _model = null;
