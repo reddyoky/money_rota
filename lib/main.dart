@@ -14,6 +14,7 @@ import 'screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'core/theme_manager.dart';
+import 'core/profile_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,9 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initializeDateFormatting('tr_TR', null);
+
+  await ThemeManager().init();
+  await ProfileManager().init();
 
   final prefs = await SharedPreferences.getInstance();
   final bool showOnboarding = true;

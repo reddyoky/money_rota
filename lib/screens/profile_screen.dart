@@ -4,6 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../core/app_colors.dart';
 import '../core/theme_manager.dart';
 import 'login_screen.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import '../core/profile_manager.dart';
+import 'dart:io';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -66,18 +70,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Row(
                     children: [
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 3),
-                        ),
-                        child: const Icon(
-                          Icons.person,
-                          size: 35,
-                          color: AppColors.primary,
+                      GestureDetector(
+                        onTap: _pickImage,
+                        child: Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 3),
+                            image: ProfileManager().imagePath != null
+                                ? DecorationImage(
+                                    image: FileImage(File(ProfileManager().imagePath!)),
+                                    fit: BoxFit.cover,
+                                  )
+                                : null,
+                          ),
+                          child: ProfileManager().imagePath == null
+                              ? const Icon(
+                                  Icons.person,
+                                  size: 35,
+                                  color: AppColors.primary,
+                                )
+                              : null,
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -461,5 +476,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+  }
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      final appDir = await getApplicationDocumentsDirectory();
+      final fileName = pickedFile.name;
+      final savedImage = await File(pickedFile.path).copy('${appDir.path}/$fileName');
+
+      await ProfileManager().saveImagePath(savedImage.path);
+      setState(() {});
+    }
   }
 }

@@ -11,6 +11,8 @@ import 'add_debt_screen.dart';
 import 'debt_detail_screen.dart';
 import 'login_screen.dart';
 import 'profile_screen.dart';
+import '../core/profile_manager.dart';
+import 'dart:io';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -75,34 +77,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 32,
-              width: 32,
-            ),
-            const SizedBox(width: 10),
-            Text(
-              "Money Rota",
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w800,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-            ),
-          ],
+        title: Text(
+          "MONEY ROTA",
+          style: GoogleFonts.montserrat(
+            fontWeight: FontWeight.bold,
+            color: const Color(0xFF05D5DA),
+            fontSize: 22,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: Icon(Icons.account_circle, color: Theme.of(context).colorScheme.primary, size: 28),
-            onPressed: () {
-               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (c) => const ProfileScreen()),
-              );
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (c) => const ProfileScreen()),
+                ).then((_) => setState(() {})); // Refresh to show new image if changed
+              },
+              child: CircleAvatar(
+                radius: 18,
+                backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                backgroundImage: ProfileManager().imagePath != null
+                    ? FileImage(File(ProfileManager().imagePath!))
+                    : null,
+                child: ProfileManager().imagePath == null
+                    ? Icon(Icons.account_circle, color: Theme.of(context).colorScheme.primary, size: 36)
+                    : null,
+              ),
+            ),
           ),
         ],
       ),

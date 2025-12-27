@@ -80,16 +80,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppColors.primary,
-              AppColors.primary.withOpacity(0.8),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        color: AppColors.primary,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -97,22 +88,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               ScaleTransition(
                 scale: _scaleAnimation,
                 child: Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 20,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
-                  ),
+                  padding: EdgeInsets.zero,
                   child: Image.asset(
-                    'assets/images/logo_cropped.png',
-                    width: 100,
-                    height: 100,
+                    'assets/images/logo_splash.png',
+                    width: 150, 
+                    height: 150,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -123,12 +103,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 child: Column(
                   children: [
                     Text(
-                      "Money Rota",
-                      style: GoogleFonts.inter(
+                      "MONEY ROTA",
+                      style: GoogleFonts.montserrat(
                         fontSize: 32,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
-                        letterSpacing: 1.2,
+                        letterSpacing: 1.5,
                       ),
                     ),
                     const SizedBox(height: 8),
