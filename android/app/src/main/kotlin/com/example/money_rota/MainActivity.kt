@@ -1,5 +1,5 @@
 package com.example.money_rota
 
-import io.flutter.embedding.android.FlutterFragmentActivity
+import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity : FlutterFragmentActivity()
+class MainActivity : FlutterActivity()

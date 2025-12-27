@@ -1,5 +1,4 @@
 @if "%DEBUG%" == "" @echo off
-set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
