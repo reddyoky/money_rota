@@ -40,7 +40,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   Future<void> _initializeApp() async {
-    // Artificial delay for better UX (so the user sees the logo)
     await Future.delayed(const Duration(seconds: 3));
 
     if (!mounted) return;

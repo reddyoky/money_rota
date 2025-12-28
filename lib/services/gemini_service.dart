@@ -10,8 +10,6 @@ class GeminiService {
     return dotenv.env['GEMINI_API_KEY'] ?? ""; 
   }
   
-  // Using Gemini 1.5 Flash via REST API
-  // Using Gemini 2.0 Flash Experimental
   static const String _baseUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent";
 
   Future<String> explainDebtOrder(List<Debt> debts) async {
@@ -25,7 +23,6 @@ class GeminiService {
       List<String> normalDebts = [];
 
       for (var d in debts) {
-        // 1. Calculate Minimum Payment Ratio based on Limit (BDDK Rules)
         String minPaymentInfo = "";
         if (d.limit != null && d.limit! > 0) {
           double ratio = d.limit! > 50000 ? 0.40 : 0.20;
@@ -33,7 +30,6 @@ class GeminiService {
           minPaymentInfo = "(Asgari: ${minPayment.toStringAsFixed(0)} TL)";
         }
 
-        // 2. Check Legal Risk (90 Days Rule)
         String riskStatus = "";
         bool isCritical = false;
         
@@ -123,7 +119,6 @@ class GeminiService {
     );
 
     if (response.statusCode == 200) {
-      print("✅ API RESPONSE: ${response.body}"); // DEBUG PRINT
       final json = jsonDecode(response.body);
       if (json['candidates'] != null && 
           (json['candidates'] as List).isNotEmpty &&
@@ -132,7 +127,6 @@ class GeminiService {
           (json['candidates'][0]['content']['parts'] as List).isNotEmpty) {
             
         final text = json['candidates'][0]['content']['parts'][0]['text'];
-        print("✅ PARSED TEXT: $text"); // DEBUG PRINT
         return text;
       }
     } else {

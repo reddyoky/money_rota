@@ -102,7 +102,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (c) => const ProfileScreen()),
-                ).then((_) => setState(() {})); // Refresh to show new image if changed
+                ).then((_) => setState(() {}));
               },
               child: CircleAvatar(
                 radius: 18,
