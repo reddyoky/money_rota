@@ -25,7 +25,7 @@ Money Rota, borçlarınızı takip etmenizi sağlayan, ödeme planları oluştur
 
 ## 📸 Ekran Görüntüleri
 
-| Giriş Ekranı | Dashboard | AI Analizi | Profil |
+| Splash Screen | Dashboard | AI Analizi | Profil |
 | :---: | :---: | :---: | :---: |
 | <img src="assets/screenshots/login.jpg" width="200" /> | <img src="assets/screenshots/dashboard.jpg" width="200" /> | <img src="assets/screenshots/ai_analysis.jpg" width="200" /> | <img src="assets/screenshots/profile.png" width="200" /> |
 
