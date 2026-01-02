@@ -316,12 +316,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             "%${debt.interestRate} Faiz Oranı",
                             style: const TextStyle(fontSize: 12),
                           ),
-                          trailing: Text(
-                            _currencyFormat.format(debt.monthlyPayment),
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primary,
-                            ),
+                          trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                _currencyFormat.format(debt.monthlyPayment),
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primary,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                "Kalan: ${_currencyFormat.format(debt.currentBalance)}",
+                                style: GoogleFonts.inter(
+                                  fontSize: 10,
+                                  color: Theme.of(context).disabledColor,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
